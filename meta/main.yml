@@ -47,7 +47,7 @@ galaxy_info:
   #       Maximum 20 tags per role.
 
 dependencies:
-  - role: docker_service
+  - name: docker_service
     src: "https://github.com/mapperr/ansible-role-docker-service.git"
     version: "master"
   # List your role dependencies here, one per line. Be sure to remove the '[]' above,
