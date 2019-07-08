@@ -1,0 +1,32 @@
+version: '2'
+# ansible docker-compose module support version 1 and 2
+
+services:
+
+  metabase:
+    image: metabase/metabase:v0.32.9
+    restart: always
+    ports:
+        - "3000:3000"
+    environment:
+      JAVA_TIMEZONE: "Europe/Rome"
+      MB_DB_TYPE: "postgres"
+      MB_DB_HOST: "database"
+      MB_DB_PORT: "5432"
+      MB_DB_DBNAME: "metabase"
+      MB_DB_USER: "metabase"
+      MB_DB_PASS: "metabase"
+    depends_on:
+        - database
+
+  database:
+    image: postgres:11.4-alpine
+    restart: always
+    volumes:
+      - database:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: "metabase"
+      POSTGRES_PASSWORD: "metabase"
+
+volumes:
+  database:
