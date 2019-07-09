@@ -1,2 +1,4 @@
 ---
 # defaults file for metabase
+METABASE_VERSION: "v0.32.9"
+METABASE_POSTGRES_VERSION: "11.4-alpine"

@@ -4,7 +4,7 @@ version: '2'
 services:
 
   metabase:
-    image: metabase/metabase:v0.32.9
+    image: "metabase/metabase:{{ METABASE_VERSION }}"
     restart: always
     ports:
         - "3000:3000"
@@ -20,7 +20,7 @@ services:
         - database
 
   database:
-    image: postgres:11.4-alpine
+    image: "postgres:{{ METABASE_POSTGRES_VERSION }}"
     restart: always
     volumes:
       - database:/var/lib/postgresql/data

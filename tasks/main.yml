@@ -6,6 +6,13 @@
   tags:
     - metabase
 
+- name: Copy compose file
+  template:
+    src: "{{ role_path }}/templates/docker-compose.yml.j2"
+    dest: "/app/metabase/docker-compose.yml"
+  tags:
+    - metabase
+
 - name: Ensure metabase container stack is started
   docker_compose:
     project_src: "/app/metabase"
