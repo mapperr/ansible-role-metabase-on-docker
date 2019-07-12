@@ -1,10 +1,10 @@
 ---
-- name: Copy compose and config files
+- name: Copy config files
   copy:
     src: "{{ role_path }}/files/"
     dest: "/app/metabase"
 
-- name: Copy compose file
+- name: Copy templated compose file
   template:
     src: "{{ role_path }}/templates/docker-compose.yml.j2"
     dest: "/app/metabase/docker-compose.yml"
