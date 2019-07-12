@@ -1,4 +1,6 @@
 ---
 # defaults file for metabase
+METABASE_BACKEND: "h2"
 METABASE_VERSION: "v0.32.9"
 METABASE_POSTGRES_VERSION: "11.4-alpine"
+METABASE_JAVA_TIMEZONE: "Europe/Rome"

@@ -9,7 +9,7 @@ services:
     ports:
         - "3000:3000"
     environment:
-      JAVA_TIMEZONE: "Europe/Rome"
+      JAVA_TIMEZONE: "{{ METABASE_JAVA_TIMEZONE }}"
       MB_DB_TYPE: "postgres"
       MB_DB_HOST: "database"
       MB_DB_PORT: "5432"

@@ -1,0 +1,24 @@
+---
+- name: Copy compose and config files
+  copy:
+    src: "{{ role_path }}/files/"
+    dest: "/app/metabase"
+
+- name: Copy compose file
+  template:
+    src: "{{ role_path }}/templates/docker-compose.yml.j2"
+    dest: "/app/metabase/docker-compose.yml"
+
+- name: Ensure metabase container stack is started
+  docker_compose:
+    project_src: "/app/metabase"
+
+- name: Ensure metabase backup cron job is present
+  import_role:
+    name: docker_volume_backup
+  vars:
+    CRON_JOB_NAME: "metabase"
+    CRON_JOB_MINUTE: "30"
+    CRON_JOB_HOUR: "07"
+    COMPOSE_FILE_ABSOLUTE_PATH: "/app/metabase/docker-compose.yml"
+    VOLUME_NAMES: "metabase_database"
